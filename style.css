@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    border: 1px solid black;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 350px;
+    height: 550px;
+}
+
+.display {
+    height: 30%;
+    margin: 10px;
+}
+
+.buttons {
+    height: 70%;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.clear {
+    grid-column: span 2;
+}
+
+.delete {
+    grid-column: span 2;
+}

@@ -44,3 +44,11 @@ function operate(num1, num2, operation) {
             console.log("Invalid operation");
     }
 }
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => {
+    console.log("test");
+    button.addEventListener("click", () => {
+        console.log(button.textContent);
+    })
+})
