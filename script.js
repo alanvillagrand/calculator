@@ -1,6 +1,7 @@
-let num1 = 0;
-let num2 = 0;
-let operation = "";
+let num1 = "";
+let num2 = "";
+let operator = "";
+let input = "";
 
 function add(a, b) {
     return a + b;
@@ -21,17 +22,14 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(num1, num2, operation) {
-    switch (operation) {
+function operate(num1, num2, operator) {
+    switch (operator) {
         case "+":
             return add(num1, num2);
-            break;
         case "-":
             return subtract(num1, num2);
-            break;
         case "*":
             return multiply(num1, num2);
-            break;
         case "/":
             try {
                 let result = divide(num1, num2);
@@ -41,14 +39,49 @@ function operate(num1, num2, operation) {
             }
             break;
         default:
-            console.log("Invalid operation");
+            console.log("Invalid operator");
     }
+}
+
+function displayValue (value) {
+    const display = document.querySelector(".display");
+    display.textContent = value;
+}
+
+function clearDisplay() {
+    const display = document.querySelector(".display");
+    display.textContent = "";
+    num1 = "";
+    num2 = "";
+    operator = "";
+    input = "";
 }
 
 const buttons = document.querySelectorAll("button");
 buttons.forEach(button => {
-    console.log("test");
     button.addEventListener("click", () => {
-        console.log(button.textContent);
+        if (button.textContent === "clear") {
+            clearDisplay();
+        } else if (button.textContent === "delete") {
+
+        } else if (button.textContent === "=") {
+            displayValue(operate(parseFloat(num1), parseFloat(num2), operator));
+            num1 = "";
+            num2 = "";
+            operator = "";
+            input = "";
+        } else  if (isNaN(button.textContent)) {
+            operator = button.textContent;
+            input += operator;
+            displayValue(input);
+        } else {
+            if (operator === "") {
+                num1 += button.textContent;
+            } else {
+                num2 += button.textContent;
+            }
+            input += parseFloat(button.textContent);
+            displayValue(input);
+        }
     })
 })
